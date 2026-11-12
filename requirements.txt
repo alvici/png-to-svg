@@ -1,0 +1,5 @@
+vtracer
+pillow
+numpy
+# opsional (renderer tercepat; di Windows kadang gagal, ada fallback):
+cairosvg
