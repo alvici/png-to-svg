@@ -16,16 +16,18 @@ Persiapan, renderer, dan masalah umum di Windows: `references/windows.md`.
 1. **Cek bahan.** Pastikan file PNG bisa dibuka. Jangan mengonversi logo atau karakter
    milik merek lain kecuali pengguna jelas berhak memakainya.
 
-2. **Tanyakan varian.** Jalankan:
+2. **Tanyakan varian sebelum konversi.** Jangan jalankan proses pembuatan SVG sampai pengguna memilih varian.
+   Jalankan:
    `python scripts/png2svg.py input.png --list-options`
-   - `source_type: color` → tawarkan centang: **Original color / White / Black**
-   - `source_type: mono`  → tawarkan centang: **Black / White**
+   - `source_type: color` → tanyakan apakah mereka ingin **Original color**, **White**, **Black**, atau kombinasi pilihan tersebut.
+   - `source_type: mono`  → tanyakan apakah mereka ingin **Black**, **White**, atau keduanya.
 
-   Kalau pengguna sudah menyebut varian, atau tidak bisa ditanya, pakai `default`.
+   Jika pengguna meminta konversi tanpa menyebut varian, berhenti setelah memeriksa opsi dan ajukan pertanyaan; jangan memilih `default` hanya karena belum ada pilihan. Lanjutkan setelah pengguna menjawab. Jika pengguna secara eksplisit meminta langsung tanpa pertanyaan, gunakan `default`.
    Detail tiap varian: `references/variants.md`.
 
-3. **Konversi.**
-   `python scripts/png2svg.py input.png out_dir --variants original,white,black --compare`
+3. **Konversi setelah pilihan pengguna diterima.**
+   Gunakan hanya varian yang dipilih pengguna pada `--variants`, misalnya:
+   `python scripts/png2svg.py input.png out_dir --variants original,white --compare`
    Tambahkan `--icons` kalau pengguna minta favicon atau ikon aplikasi.
    Untuk satu folder, ganti `input.png` dengan nama folder.
 
